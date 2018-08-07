@@ -2,11 +2,11 @@
 import React, { Component } from 'react'
 import { TouchableHighlight, TextInput, View } from 'react-native'
 
-export class HomeScreen extends Component {
+export class SignupScreen extends Component {
   render() {
     return (
       <View>
-        homescreen
+        signupscreen
       </View>
     )
   }

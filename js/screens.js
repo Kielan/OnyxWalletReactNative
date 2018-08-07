@@ -2,17 +2,19 @@
 import { StatusBar } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { LoginScreen } from './screenviews/Login'
+import { SignupScreen } from './screenviews/Signup'
 import {
   ACCOUNT_SCREEN, SEARCH_SCREEN, STORY_SCREEN,
   SETTINGS_SCREEN, STORIES_SCREEN, LOGIN_SCREEN,
 } from './store/actions/actionTypes'
 import { getComponentId } from './store/reducers/selectors'
 
-export const Screens = new Map()
-Screens.set(LOGIN_SCREEN, LoginScreen)
-
+//export const Screens = new Map()
+//Screens.set(LOGIN_SCREEN, LoginScreen)
+//store, Provider
 export function registerScreens(store, Provider) {
-	Navigation.registerComponent('walletapp.Login', () => LoginScreen, store, Provider)
+	Navigation.registerComponent('walletapp.Login', () => LoginScreen)
+  Navigation.registerComponent('walletapp.Signup', () => SignupScreen)
 }
 
 export const startApp = () => {
@@ -25,7 +27,7 @@ export const startApp = () => {
         children: [
           {
             component: {
-              name: 'SignIn',
+              name: 'walletapp.Login',
               options: {
                 bottomTab: {
                   fontSize: 12,
@@ -37,7 +39,7 @@ export const startApp = () => {
           },
           {
             component: {
-              name: 'SignUp',
+              name: 'walletapp.Signup',
               options: {
                 bottomTab: {
                   text: 'Sign Up',

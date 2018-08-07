@@ -1,11 +1,8 @@
 'use strict'
-import React, { Component } from 'react'
-import { View } from 'react-native'
 import { Navigation } from 'react-native-navigation'
-import { Provider } from 'react-redux'
-import { falcoWalletTheme } from './constants'
-import { Screens, startApp } from './screens'
-import { LoginScreen } from './screenviews/Login'
+//import { Provider } from 'react-redux'
+//import { falcoWalletTheme } from './constants'
+import { registerScreens, startApp } from './screens'
 //import { configureStore } from './store/configureStore'
 
 //const store = configureStore()
@@ -20,8 +17,7 @@ const navigatorStyle = {
 };
 
 // Register screens
-Screens.forEach((ScreenComponent, key) =>
-  Navigation.registerComponent(key, () => ScreenComponent))
+registerScreens()
 
 // Start application
 Navigation.events().registerAppLaunchedListener(() => {
@@ -35,7 +31,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: 'Initializing'
+        name: 'walletapp.Login'
       }
     },
   })
