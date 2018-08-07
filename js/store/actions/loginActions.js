@@ -1,5 +1,4 @@
 'use strict'
-import { Actions } from 'react-native-router-flux'
 import * as types from './actionTypes'
 //import { authenticationModule } from '../../modules'
 
@@ -18,7 +17,13 @@ export function loginSuccess({token, user}) {
     user,
   }
 }
-
+export function loginHydrate({token, user}) {
+  return {
+    type: types.LOGIN_HYDRATE,
+    token,
+    user,
+  }
+}
 export function loginFailure(err) {
   return {
     type: types.LOGIN_FAILURE,

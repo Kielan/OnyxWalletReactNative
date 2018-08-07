@@ -1,22 +1,32 @@
 'use strict'
+import { Platform, PlatformIOSStatic } from 'react-native'
 import * as types from '../actions/actionTypes'
 
 const initialState = {
-  isAuthenticated: false,
-  isFetching: false,
-  token: '',
-  user: {},
+  componentId: false,
+  width: '',
+  height: {},
+  isIpad: Platform.OS === 'ios' && (Platform as PlatformIOSStatic).isPad,
   errorMessage: '',
+  passProps: {
+    id,
+  },
+  options: {
+    topBar: {
+      title: {
+        text: id,
+      }
+    }
+  },
 }
 
 export default function user(state = initialState, action) {
   switch(action.type) {
-    case types.LOGIN_REQUEST:
+    case types.LOGIN_SCREEN:
       return Object.assign({}, state, {
-        isFetching: true,
-        isAuthenticated: false,
+        componentId: action.componentId
       })
-    case types.LOGIN_SUCCESS:
+    case types.ACCOUNT_SCREEN:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
@@ -24,15 +34,6 @@ export default function user(state = initialState, action) {
         failure: false,
         user: action.user,
       })
-    case types.LOGIN_FAILURE:
-      return Object.assign({}, state, {
-        isFetching: false,
-        isAuthenticated: false,
-        failure: true,
-        errorMessage: action.err,
-      })
-    case types.LOGOUT:
-      return initialState
     default:
       return state
   }

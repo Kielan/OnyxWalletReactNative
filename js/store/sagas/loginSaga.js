@@ -1,7 +1,7 @@
 'use strict'
 import React from 'react'
 import { take, put, call, fork, select } from 'redux-saga/effects'
-import { loginSuccess, loginFailure } from '../actions/loginActions'
+import { loginSuccess, loginFailure, loginHydrate } from '../actions/loginActions'
 const loginData = {
   token: 'my secret token',
   user: {
@@ -20,10 +20,16 @@ function loginCall({email, password}) {
     }, 1000) // 1 second
   })
 }
-
+function loginHydateCall({email, password}) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(loginData)
+    }, 1000) // 1 second
+  })
+}
 function *watchLoginRequest() {
   while(true) {
-    const { email, password } = yield take(types.LOGIN.REQUEST)
+    const { email, password } = yield take(types.LOGIN_REQUEST)
 
     try {
       const payload = {
@@ -33,6 +39,25 @@ function *watchLoginRequest() {
       const response = yield call(loginCall, payload)
 
       yield put(loginSuccess(response))
+      console.log('SAGA LOGIN SUCCESS: ', response)
+    } catch (err) {
+      console.log('SAGA LOGIN ERR: ', err)
+      yield put(loginFailure(err.status))
+    }
+  }
+}
+function *watchLoginSuccess() {
+  while(true) {
+    const { token, user } = yield take(types.LOGIN_SUCCESS)
+
+    try {
+      const payload = {
+        token,
+        user,
+      }
+      const response = yield call(loginCall, payload)
+
+      yield put(loginHydrate(payload))
       console.log('SAGA LOGIN SUCCESS: ', response)
     } catch (err) {
       console.log('SAGA LOGIN ERR: ', err)

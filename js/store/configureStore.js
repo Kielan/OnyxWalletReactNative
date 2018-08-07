@@ -1,50 +1,66 @@
 'use strict'
+import { Navigation } from 'react-native-navigation'
 import { createStore, applyMiddleware, compose  } from 'redux'
 import createLogger from 'redux-logger'
 import * as storage from 'redux-storage'
-//import * as createEngine from '../lib/reactiveAsyncStorageBridge.js'
-import createEngine from 'redux-storage-engine-reactnativeasyncstorage'
+//import { middleware as storageMiddleware } from 'react-native-redux-storage-middleware'
 import devTools from 'remote-redux-devtools'
-import createSagaMiddleware from 'redux-saga'
-import sagas from './sagas'
+import createSagaMiddleware, { END } from 'redux-saga'
+//import sagas from './sagas'
 import reducers from './reducers'
-const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent
-
+//const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent
+/*
 const logger = createLogger({
   predicate: (getState, action) => isDebuggingInChrome,
   collapsed: true,
   duration: true,
   diff: true,
-});
+})
+*/
 
-export default function configureStore(onComplete) {
+export function configureStore(onComplete) {
 
-  const engine = createEngine('AppTree');
-  const storeMiddleware = storage.createMiddleware(engine);
-  const sagaMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware()
 
   let store = createStore(
     storage.reducer(reducers), //Apply redux-storage so we can persist Redux state to disk
     compose(
       applyMiddleware(
         sagaMiddleware,
-        storeMiddleware,
-        logger,
+//        storageMiddleware,
+//        logger,
       ),
       devTools(),
     ),
-  );
+  )
 
-  if (isDebuggingInChrome) {
-    window.store = store;
-  }
+//  if (isDebuggingInChrome) {
+//    window.store = store
+//  }
 
-  const load = storage.createLoader(engine);
-  load(store)
-    .then(onComplete)
-    .catch(() => console.log('Failed to load previous state'));
+//  const load = storage.createLoader()
+//  load(store)
+//    .then(onComplete)
+//    .catch(() => console.log('Failed to load previous state'))
 
-  sagaMiddleware.run(sagas);
+  store.runSaga = sagaMiddleware.run
+  store.close = () => store.dispatch(END)
 
-  return store;
+  return store
 }
+
+export const userScreen = (id: string) => Navigation.push(UI.componentId, {
+  component: {
+    name: USER_SCREEN,
+    passProps: {
+      id,
+    },
+    options: {
+      topBar: {
+        title: {
+          text: id,
+        },
+      },
+    },
+  },
+})
