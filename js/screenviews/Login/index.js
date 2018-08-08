@@ -1,6 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
-import { TouchableHighlight, TouchableOpacity, TextInput, View } from 'react-native'
+import { TouchableHighlight, TouchableOpacity, TextInput, Text, View } from 'react-native'
 import { falcoWalletTheme, COLORS } from '../../constants'
 //import { connect } from 'react-redux'
 //import { bindActionCreators } from 'redux'
@@ -42,7 +42,7 @@ class LoginScreen extends Component {
 
         <View style={falcoWalletTheme.buttonContainer}>
           <TouchableOpacity buttonColor={COLORS.PRIMARY_BLACK} textColor="white" onPress={this._loginEmail}>
-            LOG IN
+          <Text>LOG IN</Text>
           </TouchableOpacity>
         </View>
       </View>
