@@ -5,6 +5,7 @@ import { falcoWalletTheme, COLORS } from '../../constants'
 //import { connect } from 'react-redux'
 //import { bindActionCreators } from 'redux'
 //import * as loginActions from '../../store/actions/loginActions'
+import { portfolioScreen } from '../../screens'
 
 class LoginScreen extends Component {
   state = {
@@ -13,10 +14,9 @@ class LoginScreen extends Component {
   }
   _loginEmail = () => {
     const { username, password } = this.state
-
     console.log(username, password, this.props.actions)
-
-    this.props.actions.loginRequest(username, password)
+    portfolioScreen()
+    //this.props.actions.loginRequest(username, password)
     //Actions.main();
   }
   render() {

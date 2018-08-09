@@ -3,7 +3,7 @@ export const falcoWalletTheme = {
 
 }
 export const COLORS = {
-  PRIMARY_BLACK: '#FD6B07',//"#F6A34F",//"#FDF1E1",//"#FFBE28",//"#ffb74d",
+  PRIMARY_BLACK: '#1A1A1A',//"#F6A34F",//"#FDF1E1",//"#FFBE28",//"#ffb74d",
   PRIMARY_GOLD: '#FE781D',//"#ffa726",//ffa726",
   PRIMARY_TEAL: '#FD8D38',
   PRIMARY_LIGHTBLUE: '#FCA259',
@@ -11,7 +11,7 @@ export const COLORS = {
   PRIMARY_YELLOW: '#FCA259',
   BACKGROUND_BLUE: '#f75d4c',
   BACKGROUND_LIGHTGRAY: 'black',
-  PRIMARY_WHITE: '#343435',
+  PRIMARY_WHITE: '#FDFDFD',
   PRIMARY_LILAC: '',
   PRIMARY_LIGHTGREEN: '',
   PRIMARY_GREEN: '',

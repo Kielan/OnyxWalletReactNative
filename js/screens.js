@@ -1,8 +1,11 @@
 'use strict'
 import { StatusBar } from 'react-native'
 import { Navigation } from 'react-native-navigation'
+import { COLORS } from './constants'
 import { LoginScreen } from './screenviews/Login'
 import { SignupScreen } from './screenviews/Signup'
+import { PortfolioScreen } from './screenviews/Portfolio'
+import { HomeScreen } from './screenviews/Home'
 import {
   ACCOUNT_SCREEN, SEARCH_SCREEN, STORY_SCREEN,
   SETTINGS_SCREEN, STORIES_SCREEN, LOGIN_SCREEN,
@@ -15,6 +18,8 @@ import { getComponentId } from './store/reducers/selectors'
 export function registerScreens(store, Provider) {
 	Navigation.registerComponent('walletapp.Login', () => LoginScreen)
   Navigation.registerComponent('walletapp.Signup', () => SignupScreen)
+  Navigation.registerComponent('walletapp.Portfolio', () => PortfolioScreen)
+  Navigation.registerComponent('walletapp.Home', () => HomeScreen)
 }
 
 export const startApp = () => {
@@ -55,7 +60,7 @@ export const startApp = () => {
   })
 }
 
-export const loginScreen = (id: string) => Navigation.push(getComponentId, {
+export const loginScreen = () => Navigation.setRoot({
   component: {
     name: LOGIN_SCREEN,
     passProps: {
@@ -84,4 +89,60 @@ export const settingsScreen = (id: string) => Navigation.push(getComponentId, {
       },
     },
   },
+})
+/*
+export const portfolioScreen = () => Navigation.setRoot({
+  root: {
+    stack: {
+      id: 'App',
+      children: [
+        {
+          component: {
+            name: 'walletapp.Portfolio',
+          }
+        }
+      ],
+    }
+  }
+})
+*/
+//      id: 'App',
+export const portfolioScreen = () => Navigation.setRoot({
+  root: {
+    stack: {
+      options: {
+        topBar: {
+          leftButtons: [
+            {
+              id: 'myDynamicButtonLeft',
+              text: 'PORTFOLIO',
+              color: COLORS.PRIMARY_WHITE
+            }
+          ],
+          title: {
+            text: 'ONYX',
+            fontFamily: 'Helvetica',
+            color: COLORS.PRIMARY_WHITE
+          },
+          rightButtons: [
+            {
+              id: 'myDynamicButtonRight',
+              text: 'ACTIONS',
+              color: COLORS.PRIMARY_WHITE
+            }
+          ],
+          background: {
+            color: COLORS.PRIMARY_BLACK,
+          }
+        }
+      },
+      children: [
+        {
+          component: {
+            name: 'walletapp.Home',
+          }
+        }
+      ],
+    }
+  }
 })
