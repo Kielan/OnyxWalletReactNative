@@ -112,32 +112,6 @@ export const portfolioScreen = () => Navigation.setRoot({
 export const portfolioScreen = () => Navigation.setRoot({
   root: {
     stack: {
-      options: {
-        topBar: {
-          leftButtons: [
-            {
-              id: 'myDynamicButtonLeft',
-              text: 'PORTFOLIO',
-              color: COLORS.PRIMARY_WHITE
-            }
-          ],
-          title: {
-            text: 'ONYX',
-//            fontFamily: 'Helvetica',
-            color: COLORS.PRIMARY_WHITE
-          },
-          rightButtons: [
-            {
-              id: 'myDynamicButtonRight',
-              text: 'ACTIONS',
-              color: COLORS.PRIMARY_WHITE
-            }
-          ],
-          background: {
-            color: COLORS.PRIMARY_BLACK,
-          }
-        },
-      },
       children: [
         {
           component: {
@@ -148,3 +122,31 @@ export const portfolioScreen = () => Navigation.setRoot({
     }
   }
 })
+/*
+options: {
+  topBar: {
+    leftButtons: [
+      {
+        id: 'myDynamicButtonLeft',
+        text: 'PORTFOLIO',
+        color: COLORS.PRIMARY_WHITE
+      }
+    ],
+    title: {
+      text: 'ONYX',
+//            fontFamily: 'Helvetica',
+      color: COLORS.PRIMARY_WHITE
+    },
+    rightButtons: [
+      {
+        id: 'myDynamicButtonRight',
+        text: 'ACTIONS',
+        color: COLORS.PRIMARY_WHITE
+      }
+    ],
+    background: {
+      color: COLORS.PRIMARY_BLACK,
+    }
+  },
+},
+*/

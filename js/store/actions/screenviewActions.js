@@ -20,7 +20,7 @@ export function homeScreen({id}) {
   }
 }
 export function tabNavigationPress({id, currentIndex, focusIndex, componentFromId, componentToId}) {
-    console.log('registerNavigationButtonPressed action: ', id, currentIndex, componentFromId, componentToId)
+    console.log('registerNavigationButtonPressed action: ', id, types.HOME_SCREEN, types.ACTIONS_SCREEN)
     let componentName = tabNavArray[focusIndex]
     Navigation.mergeOptions(componentToId, {
       component: {
@@ -28,7 +28,7 @@ export function tabNavigationPress({id, currentIndex, focusIndex, componentFromI
         options: {
           customTransition: {
             animations: [
-              { type: 'sharedElement', fromId: componentFromId, toId: componentToId, startDelay: 0, springVelocity: 0.2, duration: 0.5 }
+              { type: 'sharedElement', fromId: types.HOME_SCREEN, toId: types.ACTIONS_SCREEN, startDelay: 0, springVelocity: 0.2, duration: 0.5 }
             ],
             duration: 0.8
           }

@@ -12,7 +12,7 @@ const initialState = {
   focusIndex: 1,
 }
 
-export default function user(state = initialState, action) {
+export default function screenview(state = initialState, action) {
   switch(action.type) {
     case types.LOGIN_SCREEN:
       return Object.assign({}, state, {
