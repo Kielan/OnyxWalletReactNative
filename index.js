@@ -1,8 +1,10 @@
+'use strict'
 import { Navigation } from 'react-native-navigation'
-//import { Provider } from 'react-redux'
+import { Provider } from 'react-redux'
 //import { falcoWalletTheme } from './constants'
 import { registerScreens } from './js/screens'
-//import { configureStore } from './store/configureStore'
+import { configureStore } from './js/store/configureStore'
+import * as types from './js/store/actions/actionTypes'
 
 const navigatorStyle = {
 	navBarTranslucent: true,
@@ -14,7 +16,7 @@ const navigatorStyle = {
 };
 
 // Register screens
-registerScreens()
+registerScreens(configureStore, Provider)
 
 // Start application
 Navigation.events().registerAppLaunchedListener(() => {
@@ -22,7 +24,7 @@ Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       component: {
-        name: 'walletapp.Login'
+        name: types.LOGIN_SCREEN
       }
     },
   })

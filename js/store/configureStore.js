@@ -6,9 +6,9 @@ import * as storage from 'redux-storage'
 //import { middleware as storageMiddleware } from 'react-native-redux-storage-middleware'
 import devTools from 'remote-redux-devtools'
 import createSagaMiddleware, { END } from 'redux-saga'
-//import sagas from './sagas'
+import sagas from './sagas'
 import reducers from './reducers'
-//const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent
+const isDebuggingInChrome = !!window.navigator.userAgent
 /*
 const logger = createLogger({
   predicate: (getState, action) => isDebuggingInChrome,
@@ -34,33 +34,17 @@ export function configureStore(onComplete) {
     ),
   )
 
-//  if (isDebuggingInChrome) {
-//    window.store = store
-//  }
+  sagaMiddleware.run
+  if (isDebuggingInChrome) {
+    window.store = store
+  }
+  const load = storage.createLoader()
+  load(store)
+    .then(onComplete)
+    .catch(() => console.log('Failed to load previous state'))
 
-//  const load = storage.createLoader()
-//  load(store)
-//    .then(onComplete)
-//    .catch(() => console.log('Failed to load previous state'))
-
-  store.runSaga = sagaMiddleware.run
+  store.runSaga = sagaMiddleware.run(sagas)
   store.close = () => store.dispatch(END)
 
   return store
 }
-
-export const userScreen = (id: string) => Navigation.push(UI.componentId, {
-  component: {
-    name: USER_SCREEN,
-    passProps: {
-      id,
-    },
-    options: {
-      topBar: {
-        title: {
-          text: id,
-        },
-      },
-    },
-  },
-})

@@ -1,12 +1,17 @@
 'use strict'
-
 // Application ScreenViews
-export const ACCOUNT_SCREEN = 'falcor.AccountScreen'
-export const SEARCH_SCREEN = 'falcor.SearchScreen'
-export const STORY_SCREEN = 'falcor.StoryScreen'
-export const SETTINGS_SCREEN = 'falcor.SettingsScreen'
-export const STORIES_SCREEN = 'falcor.StoriesScreen'
-export const LOGIN_SCREEN = 'falcor.LoginScreen'
+export const ACTIONS_SCREEN = 'walletapp.ActionsScreen'
+export const ACCOUNT_SCREEN = 'walletapp.AccountScreen'
+export const SEARCH_SCREEN = 'walletapp.SearchScreen'
+export const STORY_SCREEN = 'walletapp.StoryScreen'
+export const SETTINGS_SCREEN = 'walletapp.SettingsScreen'
+export const STORIES_SCREEN = 'walletapp.StoriesScreen'
+export const LOGIN_SCREEN = 'walletapp.LoginScreen'
+export const SIGNUP_SCREEN = 'walletapp.SignupScreen'
+export const HOME_SCREEN = 'walletapp.HomeScreen'
+export const PORTFOLIO_SCREEN = 'walletapp.Portfolio'
+// Navigation events
+export const TAB_NAV_ACTION = 'TAB_NAV_ACTION'
 // Login events
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

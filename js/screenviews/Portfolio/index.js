@@ -1,5 +1,6 @@
 'use strict'
 import React, { Component } from 'react'
+import { Navigation } from 'react-native-navigation'
 import { TouchableHighlight, TouchableOpacity, TextInput, Text, View } from 'react-native'
 import { falcoWalletTheme, COLORS } from '../../constants'
 //import { connect } from 'react-redux'
@@ -21,9 +22,11 @@ class PortfolioScreen extends Component {
   }
   render() {
     return (
-      <View style={{flex: 1,alignItems: 'center',justifyContent: 'center'}}>
-        <Text>Portfolio</Text>
-      </View>
+      <Navigation.Element elementId='animatePortfolioId'>
+        <View style={{flex: 1,alignItems: 'center',justifyContent: 'center'}}>
+          <Text>Portfolio</Text>
+        </View>
+      </Navigation.Element>
     )
   }
 }
