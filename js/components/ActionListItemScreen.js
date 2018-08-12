@@ -25,4 +25,4 @@ class ActiontListItem extends Component {
     )
   }
 }
-export { AssetList }
+export { ActiontListItem }

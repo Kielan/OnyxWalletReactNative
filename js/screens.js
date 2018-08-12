@@ -148,6 +148,7 @@ export const portfolioScreen = () => Navigation.setRoot({
     }
   }
 })
+/*
 Navigation.events().registerNavigationButtonPressedListener((event) => {
   console.log('registerNavigationButtonPressedListener: ', event.buttonId)
   if (event.buttonId ===  'myDynamicButtonRight') {
@@ -161,12 +162,4 @@ Navigation.events().registerNavigationButtonPressedListener((event) => {
     })
   }
 })
-const getFocusIndex = (index) => {
-  let tabNavArray = [
-    types.PORTFOLIO_SCREEN,
-    types.HOME_SCREEN,
-    types.ACTIONS_SCREEN,
-  ]
-  console.log('tabNavArray[index]: ', tabNavArray[index])
-  return tabNavArray[index]
-}
+*/

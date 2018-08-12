@@ -11,19 +11,13 @@ export class ActionsScreen extends Component {
   }
   renderStory({ item }) {
     if (!item || item.isHidden) {
-      return null;
-    }
-    if (item.type === 'page' && UI.settings.appearance.showPageEndings) {
-      return (
-        <Text style={styles.page}>PAGE {item.time + 1}</Text>
-      );
+      return null
     }
     return (
       <ActionListItemScreen
         isMasterView={true}
         key={item.id}
-        item={item}
-      />
+        item={item} />
     )
   }
   render() {
