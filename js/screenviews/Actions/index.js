@@ -1,7 +1,7 @@
 'use strict'
 import React, { Component } from 'react'
 import { Navigation } from 'react-native-navigation'
-import { ActionListItemScreen } '../../components/ActionListItemScreen'
+import { ActionListItemScreen } from '../../components/ActionListItemScreen'
 import { TouchableHighlight, FlatList, TextInput, Text, View } from 'react-native'
 
 export class ActionsScreen extends Component {
@@ -9,6 +9,7 @@ export class ActionsScreen extends Component {
     super(props)
     Navigation.events().bindComponent(this) // <== Will be automatically unregistered when unmounted
   }
+  listRef = React.createRef()
   renderStory({ item }) {
     if (!item || item.isHidden) {
       return null
@@ -27,22 +28,21 @@ export class ActionsScreen extends Component {
           style={styles.host}
           testID="ACTIONS_SCREEN"
         >
-          <FlatList
-            ref={this.listRef}
-            style={styles.list}
-            data={Stories.stories}
-            extraData={Stories.stories.length}
-            ListFooterComponent={!this.isRefreshing && Stories.isLoading && <Loading end={true} />}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderStory}
-            refreshing={this.isRefreshing}
-            onEndReachedThreshold={0.75}
-            onRefresh={this.onRefresh}
-            onEndReached={this.onEndReached}
-            scrollEnabled={UI.scrollEnabled}
-          />
+
         </View>
       </Navigation.Element>
     )
   }
 }
+/*
+<FlatList
+  ref={this.listRef}
+  data={{[]}}
+  extraData={Stories.stories.length}
+  ListFooterComponent={!this.isRefreshing && Stories.isLoading && <Loading end={true} />}
+  renderItem={this.renderStory}
+  refreshing={this.isRefreshing}
+  onEndReachedThreshold={0.75}
+  scrollEnabled={true}
+/>
+*/

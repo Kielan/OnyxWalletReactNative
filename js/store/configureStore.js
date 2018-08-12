@@ -4,7 +4,7 @@ import { createStore, applyMiddleware, compose  } from 'redux'
 import createLogger from 'redux-logger'
 import * as storage from 'redux-storage'
 //import { middleware as storageMiddleware } from 'react-native-redux-storage-middleware'
-import devTools from 'remote-redux-devtools'
+//import devTools from 'remote-redux-devtools'
 import createSagaMiddleware, { END } from 'redux-saga'
 import sagas from './sagas'
 import reducers from './reducers'
@@ -30,11 +30,10 @@ export function configureStore(onComplete) {
 //        storageMiddleware,
 //        logger,
       ),
-      devTools(),
+//      devTools(),
     ),
   )
 
-  sagaMiddleware.run
   if (isDebuggingInChrome) {
     window.store = store
   }

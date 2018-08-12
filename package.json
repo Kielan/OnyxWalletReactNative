@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "expect": "^23.5.0",
     "prop-types": "^15.6.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
@@ -26,7 +27,8 @@
     "jest": "23.4.1",
     "react-test-renderer": "16.4.1",
     "remote-redux-devtools": "^0.3.3",
-    "remote-redux-devtools-on-debugger": "^0.4.5"
+    "remote-redux-devtools-on-debugger": "^0.4.5",
+    "snapshot-diff": "^0.4.0"
   },
   "jest": {
     "preset": "react-native"

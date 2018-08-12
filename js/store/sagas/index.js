@@ -9,4 +9,4 @@ export default function* root() {
   yield fork(loginSaga)
   yield fork(navigationSaga)
 }
-export * from './loginSaga'
+export { loginSaga }
