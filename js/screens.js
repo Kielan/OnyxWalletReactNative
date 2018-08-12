@@ -7,7 +7,7 @@ import { ActionsScreen } from './screenviews/Actions'
 import { SignupScreen } from './screenviews/Signup'
 import { PortfolioScreen } from './screenviews/Portfolio'
 import { HomeScreen } from './screenviews/Home'
-import { TopBar } from './screenviews/TopBar'
+//import { TopBar } from './screenviews/TopBar'
 import * as types from './store/actions/actionTypes'
 import { tabNavigationPress } from './store/actions/screenviewActions'
 import { getComponentId, getCurrentIndex } from './store/reducers/selectors'
@@ -148,18 +148,3 @@ export const portfolioScreen = () => Navigation.setRoot({
     }
   }
 })
-/*
-Navigation.events().registerNavigationButtonPressedListener((event) => {
-  console.log('registerNavigationButtonPressedListener: ', event.buttonId)
-  if (event.buttonId ===  'myDynamicButtonRight') {
-    console.log('registerNavigationButtonPressedListener 2: ', getCurrentIndex(), event.buttonId)
-    tabNavigationPress({
-      id: event.buttonId,
-      currentIndex: getCurrentIndex(),
-      focusIndex:(getCurrentIndex()+1),
-      componentFromId: getFocusIndex(getCurrentIndex()),
-      componentToId: getFocusIndex(getCurrentIndex()+1),
-    })
-  }
-})
-*/

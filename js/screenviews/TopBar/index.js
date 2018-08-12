@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from '../../constants'
 
-
+/*
 
 class TopBar extends Component {
   static get options() {
@@ -63,5 +63,5 @@ class TopBar extends Component {
     return
     )
   }
-}
-export { TopBar }
+}*/
+//export { TopBar }
