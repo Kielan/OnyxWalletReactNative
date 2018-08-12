@@ -6,18 +6,10 @@ const initialState = {
   componentId: false,
   width: '',
   height: {},
-  isIpad: Platform.OS === 'ios' && (Platform as PlatformIOSStatic).isPad,
+  isIpad: true,
   errorMessage: '',
-  passProps: {
-    id,
-  },
-  options: {
-    topBar: {
-      title: {
-        text: id,
-      }
-    }
-  },
+  currentIndex: 1,
+  focusIndex: 1,
 }
 
 export default function user(state = initialState, action) {
@@ -33,6 +25,22 @@ export default function user(state = initialState, action) {
         token: action.token,
         failure: false,
         user: action.user,
+      })
+    case types.HOME_SCREEN:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        token: action.token,
+        failure: false,
+        user: action.user,
+      })
+    case types.TAB_NAV_ACTION:
+      return Object.assign({}, state, {
+        currentIndex: action.currentIndex,
+        focusIndex: action.focusIndex,
+        componentId: action.componentId,
+        componentFromId: action.componentFromId,
+        componentToId: action.componentToId,
       })
     default:
       return state

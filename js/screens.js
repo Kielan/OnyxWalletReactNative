@@ -3,23 +3,24 @@ import { StatusBar } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import { COLORS } from './constants'
 import { LoginScreen } from './screenviews/Login'
+import { ActionsScreen } from './screenviews/Actions'
 import { SignupScreen } from './screenviews/Signup'
 import { PortfolioScreen } from './screenviews/Portfolio'
 import { HomeScreen } from './screenviews/Home'
-import {
-  ACCOUNT_SCREEN, SEARCH_SCREEN, STORY_SCREEN,
-  SETTINGS_SCREEN, STORIES_SCREEN, LOGIN_SCREEN,
-} from './store/actions/actionTypes'
-import { getComponentId } from './store/reducers/selectors'
+//import { TopBar } from './screenviews/TopBar'
+import * as types from './store/actions/actionTypes'
+import { tabNavigationPress } from './store/actions/screenviewActions'
+import { getComponentId, getCurrentIndex } from './store/reducers/selectors'
 
 //export const Screens = new Map()
 //Screens.set(LOGIN_SCREEN, LoginScreen)
 //store, Provider
 export function registerScreens(store, Provider) {
-	Navigation.registerComponent('walletapp.Login', () => LoginScreen)
-  Navigation.registerComponent('walletapp.Signup', () => SignupScreen)
-  Navigation.registerComponent('walletapp.Portfolio', () => PortfolioScreen)
-  Navigation.registerComponent('walletapp.Home', () => HomeScreen)
+	Navigation.registerComponent(types.LOGIN_SCREEN, () => LoginScreen, Provider, store)
+  Navigation.registerComponent(types.SIGNUP_SCREEN, () => SignupScreen, Provider, store)
+  Navigation.registerComponent(types.PORTFOLIO_SCREEN, () => PortfolioScreen, Provider, store)
+  Navigation.registerComponent(types.HOME_SCREEN, () => HomeScreen, Provider, store)
+  Navigation.registerComponent(types.ACTIONS_SCREEN, () => ActionsScreen, Provider, store)
 }
 
 export const startApp = () => {
@@ -32,24 +33,24 @@ export const startApp = () => {
         children: [
           {
             component: {
-              name: 'walletapp.Login',
+              name: types.LOGIN_SCREEN,
               options: {
                 bottomTab: {
                   fontSize: 12,
                   text: 'Sign In',
-                  icon: require('./assets/icons/signup.png')
+                  icon: require('./assets/icons/signin.png')
                 }
               }
             },
           },
           {
             component: {
-              name: 'walletapp.Signup',
+              name: types.SIGNUP_SCREEN,
               options: {
                 bottomTab: {
                   text: 'Sign Up',
                   fontSize: 12,
-                  icon: require('./assets/icons/signin.png')
+                  icon: require('./assets/icons/signup.png')
                 }
               }
             },
@@ -62,7 +63,7 @@ export const startApp = () => {
 
 export const loginScreen = () => Navigation.setRoot({
   component: {
-    name: LOGIN_SCREEN,
+    name: types.LOGIN_SCREEN,
     passProps: {
       id,
     },
@@ -75,9 +76,10 @@ export const loginScreen = () => Navigation.setRoot({
     },
   },
 })
+
 export const settingsScreen = (id: string) => Navigation.push(getComponentId, {
   component: {
-    name: SETTINGS_SCREEN,
+    name: types.SETTINGS_SCREEN,
     passProps: {
       id,
     },
@@ -121,7 +123,7 @@ export const portfolioScreen = () => Navigation.setRoot({
           ],
           title: {
             text: 'ONYX',
-            fontFamily: 'Helvetica',
+//            fontFamily: 'Helvetica',
             color: COLORS.PRIMARY_WHITE
           },
           rightButtons: [
@@ -134,15 +136,15 @@ export const portfolioScreen = () => Navigation.setRoot({
           background: {
             color: COLORS.PRIMARY_BLACK,
           }
-        }
+        },
       },
       children: [
         {
           component: {
-            name: 'walletapp.Home',
+            name: types.HOME_SCREEN,
           }
         }
-      ],
+      ]
     }
   }
 })

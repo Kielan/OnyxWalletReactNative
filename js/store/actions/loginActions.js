@@ -9,7 +9,6 @@ export function loginRequest(email, password) {
     password,
   }
 }
-
 export function loginSuccess({token, user}) {
   return {
     type: types.LOGIN_SUCCESS,
