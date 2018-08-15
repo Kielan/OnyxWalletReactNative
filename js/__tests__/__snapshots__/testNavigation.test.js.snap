@@ -1,0 +1,15 @@
+'use strict'
+exports[`renders the Home and TopBar component correctly`] = `
+<Navigation.Element elementId='animateHomeId'>
+  <View>
+    <View>
+      <Text>THU FEB 18, 3:00AM</Text>
+    </View>
+    <View>
+      <Text>$26.81</Text>
+      <Text>USD</Text>
+    </View>
+    <AssetDataGraph />
+    <AssetList />
+  </View>
+</Navigation.Element`
