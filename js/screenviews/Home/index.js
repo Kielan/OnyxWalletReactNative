@@ -73,7 +73,7 @@ class HomeScreen extends Component {
   }
   render() {
     return (
-      <Navigation.Element elementId='animateHomeId'>
+      <Navigation.Element accessibilityLabel={'animateHomeLabel'} elementId='animateHomeId'>
         <View>
           <View>
             <Text>THU FEB 18, 3:00AM</Text>
