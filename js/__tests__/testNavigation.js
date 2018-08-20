@@ -1,4 +1,5 @@
 'use strict'
+import 'react-native'
 import {ActivityIndicator} from 'react-native'
 import React from 'react'
 import * as renderer from 'react-test-renderer'
@@ -11,13 +12,13 @@ it('renders the Home and TopBar component correctly', () => {
     .toJSON()
   expect(tree).toMatchSnapshot()
 })
-/*
+
 it(':ios: shows splash screen and then login', async () => {
 //  await elementById(testIDs.COMPLEX_LAYOUT_BUTTON).tap()
 //  await elementById(testIDs.EXTERNAL_COMPONENT_IN_STACK).tap()
-  await expect(elementByLabel('animateHomeLabel')).toBeVisible()
+  await expect(element(by.label('animateLoginLabel'))).toBeVisible()
 })
-
+/*
 it(':ios: shows external component in stack in modal', async () => {
 //  await elementById(testIDs.COMPLEX_LAYOUT_BUTTON).tap()
 //  await elementById(testIDs.EXTERNAL_COMPONENT_IN_STACK).tap()
