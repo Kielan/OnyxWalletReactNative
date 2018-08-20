@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-preset-react-native": "4.0.0",
     "expect": "^23.5.0",
     "prop-types": "^15.6.2",
     "react": "16.4.1",
@@ -21,7 +22,6 @@
   },
   "devDependencies": {
     "babel-eslint": "8.0.3",
-    "babel-preset-react-native": "5",
     "detox": "^8.1.6",
     "eslint": "3.5.0",
     "eslint-plugin-react-native": "2.0.0",
@@ -29,7 +29,8 @@
     "react-test-renderer": "16.4.2",
     "remote-redux-devtools": "^0.3.3",
     "remote-redux-devtools-on-debugger": "^0.4.5",
-    "snapshot-diff": "^0.4.0"
+    "snapshot-diff": "^0.4.0",
+    "redux-saga-testing": "1.0.5"
   },
   "jest": {
     "preset": "react-native"
@@ -39,14 +40,14 @@
     "specs": "e2e",
     "configurations": {
       "ios.sim.release": {
-        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/example.app",
-        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project ios/example.xcodeproj -scheme example -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet",
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/FalcoWallet.app",
+        "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -project ios/FalcoWallet.xcodeproj -scheme example -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet",
         "type": "ios.simulator",
         "name": "iPhone 7 Plus"
       },
       "ios.sim.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/example.app",
-        "build": "xcodebuild -project ios/example.xcodeproj -scheme example -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/FalcoWallet.app",
+        "build": "xcodebuild -project ios/FalcoWallet.xcodeproj -scheme example -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7 Plus"
       },

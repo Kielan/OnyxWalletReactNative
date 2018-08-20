@@ -9,14 +9,6 @@ import createSagaMiddleware, { END } from 'redux-saga'
 import sagas from './sagas'
 import reducers from './reducers'
 const isDebuggingInChrome = !!window.navigator.userAgent
-/*
-const logger = createLogger({
-  predicate: (getState, action) => isDebuggingInChrome,
-  collapsed: true,
-  duration: true,
-  diff: true,
-})
-*/
 
 export function configureStore(onComplete) {
 

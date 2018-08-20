@@ -21,7 +21,7 @@ class LoginScreen extends Component {
   }
   render() {
     return (
-      <View style={{flex: 1,alignItems: 'center',justifyContent: 'center'}}>
+      <View accessibilityLabel={'animateLoginLabel'} style={{flex: 1,alignItems: 'center',justifyContent: 'center'}}>
         <View style={falcoWalletTheme.buttonContainer}>
           <TextInput
             onChangeText={(username) => this.setState({username})}
