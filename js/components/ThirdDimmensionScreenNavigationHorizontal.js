@@ -1,6 +1,6 @@
 'use strict'
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   PanResponder,
   Animated,
@@ -10,11 +10,11 @@ import {
   View,
   Text,
   Platform
-} from "react-native"
-const { width, height } = Dimensions.get("window")
+} from 'react-native'
+const { width, height } = Dimensions.get('window')
 
-const PESPECTIVE = Platform.OS === "ios" ? 2.38 : 1.7
-const TR_POSITION = Platform.OS === "ios" ? 2 : 1.5
+const PESPECTIVE = Platform.OS === 'ios' ? 2.38 : 1.7
+const TR_POSITION = Platform.OS === 'ios' ? 2 : 1.5
 
 export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
   constructor(props) {
@@ -106,12 +106,12 @@ export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
     let translateX = scrollX.interpolate({
       inputRange: [pageX - width, pageX, pageX + width],
       outputRange: [(-width - 1) / TR_POSITION, 0, (width + 1) / TR_POSITION],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     })
     let rotateY = scrollX.interpolate({
       inputRange: [pageX - width, pageX, pageX + width],
-      outputRange: ["-60deg", "0deg", "60deg"],
-      extrapolate: "clamp"
+      outputRange: ['-60deg', '0deg', '60deg'],
+      extrapolate: 'clamp'
     })
     let translateXAfterRotate = scrollX.interpolate({
       inputRange: [pageX - width, pageX, pageX + width],
@@ -129,7 +129,7 @@ export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
         (width + 1) / PESPECTIVE,
         +width + 1
       ],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     })
     let opacity = scrollX.interpolate({
       inputRange: [
@@ -140,7 +140,7 @@ export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
         pageX + width
       ],
       outputRange: [0, 0.6, 1, 0.6, 0],
-      extrapolate: "clamp"
+      extrapolate: 'clamp'
     })
 
     return {
@@ -168,7 +168,7 @@ export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
       <Animated.View
         style={[
           StyleSheet.absoluteFill,
-          { backgroundColor: "transparent" },
+          { backgroundColor: 'transparent' },
           this._getTransformsFor(i, false)
         ]}
         key={`child- ${i}`}
@@ -199,7 +199,7 @@ export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
 
     return (
       <Animated.View
-        style={[{ position: "absolute" }]}
+        style={[{ position: 'absolute' }]}
         ref={view => {
           this._scrollView = view
         }}
@@ -207,7 +207,7 @@ export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
       >
         <Animated.View
           style={[
-            { backgroundColor: "#000", position: "absolute", width, height },
+            { backgroundColor: '#000', position: 'absolute', width, height },
             expandStyle
           ]}
         >

@@ -89,6 +89,7 @@ class HomeScreen extends Component {
     )
   }
 }
+
 export { HomeScreen }
 /*
 function mapStateToProps(state, ownProps) {
