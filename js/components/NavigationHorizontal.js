@@ -20,7 +20,7 @@ export class CubeNavigationHorizontal extends React.Component {
   constructor(props) {
     super(props)
 
-    this.pages = this.props.children.map((child, index) => width * -index);
+    this.pages = this.props.children.map((child, index) => width * -index)
 
     this.state = {
       scrollLockPage: this.pages[this.props.scrollLockPage]
@@ -42,25 +42,25 @@ export class CubeNavigationHorizontal extends React.Component {
       onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
         Math.abs(gestureState.dx) > 60,
       onPanResponderGrant: (e, gestureState) => {
-        this._animatedValue.stopAnimation();
-        this._animatedValue.setOffset({ x: this._value.x, y: this._value.y });
+        this._animatedValue.stopAnimation()
+        this._animatedValue.setOffset({ x: this._value.x, y: this._value.y })
       },
       onPanResponderMove: (e, gestureState) => {
-        Animated.event([null, { dx: this._animatedValue.x }])(e, gestureState);
+        Animated.event([null, { dx: this._animatedValue.x }])(e, gestureState)
 
         // Avoid last movement
         this.lockLast =
           this.state.scrollLockPage != undefined
             ? -this.state.scrollLockPage
-            : this.pages[this.pages.length - 1];
+            : this.pages[this.pages.length - 1]
         if (this._value.x > this.pages[0] || this._value.x < this.lockLast) {
-          this._animatedValue.setValue({ x: 0, y: 0 });
+          this._animatedValue.setValue({ x: 0, y: 0 })
         }
       },
       onPanResponderRelease: (e, gestureState) => {
-        let mod = gestureState.dx > 0 ? 100 : -100;
+        let mod = gestureState.dx > 0 ? 100 : -100
 
-        let goTo = this._closest(this._value.x + mod);
+        let goTo = this._closest(this._value.x + mod)
         if (this.lockLast > goTo) return; //remove in the future
         this._animatedValue.flattenOffset({
           x: this._value.x,
@@ -73,7 +73,7 @@ export class CubeNavigationHorizontal extends React.Component {
         }).start()
         setTimeout(() => {
           if (this.props.callBackAfterSwipe)
-            this.props.callBackAfterSwipe(goTo);
+            this.props.callBackAfterSwipe(goTo)
         }, 500)
       }
     })
@@ -91,7 +91,7 @@ export class CubeNavigationHorizontal extends React.Component {
     @page: index
   */
   scrollTo(page, animated) {
-    animated = animated == undefined ? true : animated;
+    animated = animated == undefined ? true : animated
 
     if (animated) {
       Animated.spring(this._animatedValue, {
@@ -174,7 +174,7 @@ export class CubeNavigationHorizontal extends React.Component {
     let props = {
       i,
       style
-    };
+    }
     let element = React.cloneElement(child, props)
 
     return (
@@ -196,7 +196,7 @@ export class CubeNavigationHorizontal extends React.Component {
 
     let i = 0
     let minDiff = 1000
-    let ans;
+    let ans
     for (i in array) {
       let m = Math.abs(num - array[i])
       if (m < minDiff) {
