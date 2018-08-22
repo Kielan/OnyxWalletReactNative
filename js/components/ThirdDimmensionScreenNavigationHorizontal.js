@@ -16,22 +16,18 @@ const { width, height } = Dimensions.get("window")
 const PESPECTIVE = Platform.OS === "ios" ? 2.38 : 1.7
 const TR_POSITION = Platform.OS === "ios" ? 2 : 1.5
 
-export class CubeNavigationHorizontal extends React.Component {
+export class ThirdDimmensionScreenNavigationHorizontal extends React.Component {
   constructor(props) {
     super(props)
-
     this.pages = this.props.children.map((child, index) => width * -index)
-
     this.state = {
       scrollLockPage: this.pages[this.props.scrollLockPage]
     }
   }
-
   componentWillMount() {
     this._animatedValue = new Animated.ValueXY()
     this._animatedValue.setValue({ x: 0, y: 0 })
     this._value = { x: 0, y: 0 }
-
     this._animatedValue.addListener(value => {
       this._value = value
     })
@@ -78,7 +74,6 @@ export class CubeNavigationHorizontal extends React.Component {
       }
     })
   }
-
   componentWillReceiveProps(props) {
     this.setState({
       scrollLockPage: props.scrollLockPage
@@ -86,7 +81,6 @@ export class CubeNavigationHorizontal extends React.Component {
         : undefined
     })
   }
-
   /*
     @page: index
   */
@@ -103,27 +97,22 @@ export class CubeNavigationHorizontal extends React.Component {
       this._animatedValue.setValue({ x: this.pages[page], y: 0 })
     }
   }
-
   /*
   Private methods
   */
-
   _getTransformsFor = i => {
     let scrollX = this._animatedValue.x
     let pageX = -width * i
-
     let translateX = scrollX.interpolate({
       inputRange: [pageX - width, pageX, pageX + width],
       outputRange: [(-width - 1) / TR_POSITION, 0, (width + 1) / TR_POSITION],
       extrapolate: "clamp"
     })
-
     let rotateY = scrollX.interpolate({
       inputRange: [pageX - width, pageX, pageX + width],
       outputRange: ["-60deg", "0deg", "60deg"],
       extrapolate: "clamp"
     })
-
     let translateXAfterRotate = scrollX.interpolate({
       inputRange: [pageX - width, pageX, pageX + width],
       inputRange: [
@@ -142,7 +131,6 @@ export class CubeNavigationHorizontal extends React.Component {
       ],
       extrapolate: "clamp"
     })
-
     let opacity = scrollX.interpolate({
       inputRange: [
         pageX - width,
@@ -165,7 +153,6 @@ export class CubeNavigationHorizontal extends React.Component {
       opacity: opacity
     }
   }
-
   _renderChild = (child, i) => {
     let expandStyle = this.props.expandView
       ? { paddingTop: 100, paddingBottom: 100, height: height + 200 }
@@ -190,7 +177,6 @@ export class CubeNavigationHorizontal extends React.Component {
       </Animated.View>
     )
   }
-
   _closest = num => {
     let array = this.pages
 
@@ -206,7 +192,6 @@ export class CubeNavigationHorizontal extends React.Component {
     }
     return ans
   }
-
   render() {
     let expandStyle = this.props.expandView
       ? { top: -100, left: 0, width, height: height + 200 }
@@ -233,12 +218,12 @@ export class CubeNavigationHorizontal extends React.Component {
   }
 }
 
-CubeNavigationHorizontal.propTypes = {
+ThirdDimmensionScreenNavigationHorizontal.propTypes = {
   callBackAfterSwipe: PropTypes.func,
   scrollLockPage: PropTypes.number,
   expandView: PropTypes.bool
 }
 
-CubeNavigationHorizontal.defaultProps = {
+ThirdDimmensionScreenNavigationHorizontal.defaultProps = {
   expandView: false
 }
