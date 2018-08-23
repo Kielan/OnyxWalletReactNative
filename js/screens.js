@@ -7,6 +7,7 @@ import { ActionsScreen } from './screenviews/Actions'
 import { SignupScreen } from './screenviews/Signup'
 import { PortfolioScreen } from './screenviews/Portfolio'
 import { HomeScreen } from './screenviews/Home'
+import { HorizontalNavigationDashView } from './screenviews/MainNavigation'
 //import { TopBar } from './screenviews/TopBar'
 import * as types from './store/actions/actionTypes'
 import { tabNavigationPress } from './store/actions/screenviewActions'
@@ -20,7 +21,8 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent(types.SIGNUP_SCREEN, () => SignupScreen, Provider, store)
   Navigation.registerComponent(types.PORTFOLIO_SCREEN, () => PortfolioScreen, Provider, store)
   Navigation.registerComponent(types.HOME_SCREEN, () => HomeScreen, Provider, store)
-  Navigation.registerComponent(types.ACTIONS_SCREEN, () => ActionsScreen, Provider, store)
+	Navigation.registerComponent(types.HOME_SCREENALT, () => HorizontalNavigationDashView, Provider, store)
+	Navigation.registerComponent(types.ACTIONS_SCREEN, () => ActionsScreen, Provider, store)
 }
 
 export const startApp = () => {
@@ -92,61 +94,30 @@ export const settingsScreen = (id: string) => Navigation.push(getComponentId, {
     },
   },
 })
-/*
+
 export const portfolioScreen = () => Navigation.setRoot({
-  root: {
-    stack: {
-      id: 'App',
-      children: [
-        {
-          component: {
-            name: 'walletapp.Portfolio',
-          }
-        }
-      ],
-    }
-  }
+	root: {
+		stack: {
+			children: [
+				{ component: {
+					name: types.HOME_SCREENALT,
+				} }
+			]
+		}
+	}
 })
-*/
-//      id: 'App',
-export const portfolioScreen = () => Navigation.setRoot({
-  root: {
-    stack: {
-      children: [
-        {
-          component: {
-            name: types.HOME_SCREEN,
-          }
-        }
-      ]
-    }
-  }
-})
+
 /*
-options: {
-  topBar: {
-    leftButtons: [
-      {
-        id: 'myDynamicButtonLeft',
-        text: 'PORTFOLIO',
-        color: COLORS.PRIMARY_WHITE
-      }
-    ],
-    title: {
-      text: 'ONYX',
-//            fontFamily: 'Helvetica',
-      color: COLORS.PRIMARY_WHITE
-    },
-    rightButtons: [
-      {
-        id: 'myDynamicButtonRight',
-        text: 'ACTIONS',
-        color: COLORS.PRIMARY_WHITE
-      }
-    ],
-    background: {
-      color: COLORS.PRIMARY_BLACK,
-    }
-  },
-},
+root: {
+	stack: {
+		children: [
+			{
+				component: {
+					name: types.HOME_SCREENALT,
+				}
+			}
+		]
+	}
+}
+
 */

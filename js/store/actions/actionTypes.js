@@ -9,6 +9,7 @@ export const STORIES_SCREEN = 'walletapp.StoriesScreen'
 export const LOGIN_SCREEN = 'walletapp.LoginScreen'
 export const SIGNUP_SCREEN = 'walletapp.SignupScreen'
 export const HOME_SCREEN = 'walletapp.HomeScreen'
+export const HOME_SCREENALT = 'walletapp.HomeScreenAlternative'
 export const PORTFOLIO_SCREEN = 'walletapp.Portfolio'
 // Navigation events
 export const TAB_NAV_ACTION = 'TAB_NAV_ACTION'
