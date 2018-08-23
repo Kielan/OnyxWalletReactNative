@@ -8,7 +8,7 @@
     "test:e2e": "detox test -c ios.sim.debug"
   },
   "dependencies": {
-    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native": "5.0.0",
     "expect": "^23.5.0",
     "prop-types": "^15.6.2",
     "react": "16.4.1",
@@ -28,10 +28,10 @@
     "eslint-plugin-react-native": "2.0.0",
     "jest": "23.4.1",
     "react-test-renderer": "16.4.2",
+    "redux-saga-testing": "1.0.5",
     "remote-redux-devtools": "^0.3.3",
     "remote-redux-devtools-on-debugger": "^0.4.5",
-    "snapshot-diff": "^0.4.0",
-    "redux-saga-testing": "1.0.5"
+    "snapshot-diff": "^0.4.0"
   },
   "jest": {
     "preset": "react-native"
