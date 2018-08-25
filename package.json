@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "babel-preset-react-native": "5.0.0",
+    "crypto": "^1.0.1",
+    "d3": "5.5.0",
     "expect": "^23.5.0",
+    "got": "^9.1.0",
     "prop-types": "^15.6.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
