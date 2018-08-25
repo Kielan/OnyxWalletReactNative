@@ -11,15 +11,46 @@ import {
   TouchableWithoutFeedback
 } from 'react-native'
 import { ThirdDimmensionScreenNavigationHorizontal } from '../components/ThirdDimmensionScreenNavigationHorizontal'
+import { Navigation } from 'react-native-navigation'
+import { COLORS } from '../constants'
+import { HomeAlt } from './HomeAlt/HomeAlt'
 
 const { width, height } = Dimensions.get('window')
 
 export class HorizontalNavigationDashView extends React.Component {
   constructor(props) {
     super(props)
+    console.log('this.props should have componentId', this.props)
+    Navigation.events().bindComponent(this) // <== Will be automatically unregistered when unmounted
     this.state = {
       move: new Animated.Value(600)
     }
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        leftButtons: [
+          {
+            id: 'myDynamicButtonLeft',
+            text: 'PORTFOLIO',
+            color: COLORS.PRIMARY_WHITE
+          }
+        ],
+        title: {
+          text: 'ONYX',
+      //            fontFamily: 'Helvetica',
+          color: COLORS.PRIMARY_WHITE
+        },
+        rightButtons: [
+          {
+            id: 'myDynamicButtonRight',
+            text: 'ACTIONS',
+            color: COLORS.PRIMARY_WHITE
+          }
+        ],
+        background: {
+          color: COLORS.PRIMARY_BLACK,
+        }
+      }
+    })
   }
   goToNext = () => {
     this.cube.scrollTo(2)
@@ -35,6 +66,9 @@ export class HorizontalNavigationDashView extends React.Component {
     }
   }
   render() {
+    const { authStore, dataViewStore, homeViewStore, chatStore, data: graphData, } = this.props
+    const graphProps = {}
+          graphProps.data = homeViewStore.chartData.messagesActivity && homeViewStore.chartData.messagesActivity.length && homeViewStore.chartData.messagesActivity.slice(0) || []//graphData.daily.data
     return (
       <View style={styles.father}>
         <StatusBar hidden={true} />
@@ -86,19 +120,8 @@ export class HorizontalNavigationDashView extends React.Component {
               </View>
             </TouchableWithoutFeedback>
           </View>
-          <View style={[styles.container, { backgroundColor: "#CBF941" }]}>
-            <Image source={require("../assets/01.png")} style={styles.image} />
-            <Text
-              style={[
-                styles.text,
-                { fontSize: 50, textAlign: "center", paddingBottom: 5 }
-              ]}
-            >
-              🎩
-            </Text>
-            <Text style={[styles.text, { paddingBottom: 80 }]}>
-              Smooth gesture cube
-            </Text>
+          <View style={[styles.container, { backgroundColor: COLORS.PRIMARY_BLACK }]}>
+            <HomeAlt componentId={this.props.componentId} />
           </View>
           <View style={[styles.container, { backgroundColor: "#CBF941" }]}>
             <Image source={require("../assets/02.png")} style={styles.image} />

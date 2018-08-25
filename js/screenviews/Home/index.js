@@ -25,6 +25,7 @@ class HomeScreen extends Component {
     super(props)
     this.componentThis = this
     Navigation.events().bindComponent(this) // <== Will be automatically unregistered when unmounted
+//    Navigation.
   }
   static get options() {
     return {
