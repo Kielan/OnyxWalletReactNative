@@ -68,7 +68,7 @@ export class HorizontalNavigationDashView extends React.Component {
   render() {
     const { authStore, dataViewStore, homeViewStore, chatStore, data: graphData, } = this.props
     const graphProps = {}
-          graphProps.data = homeViewStore.chartData.messagesActivity && homeViewStore.chartData.messagesActivity.length && homeViewStore.chartData.messagesActivity.slice(0) || []//graphData.daily.data
+          graphProps.data = []//homeViewStore.chartData.messagesActivity && homeViewStore.chartData.messagesActivity.length && homeViewStore.chartData.messagesActivity.slice(0) || []//graphData.daily.data
     return (
       <View style={styles.father}>
         <StatusBar hidden={true} />
@@ -121,7 +121,7 @@ export class HorizontalNavigationDashView extends React.Component {
             </TouchableWithoutFeedback>
           </View>
           <View style={[styles.container, { backgroundColor: COLORS.PRIMARY_BLACK }]}>
-            <HomeAlt componentId={this.props.componentId} />
+            <HomeAlt componentId={this.props.componentId} graphProps={graphProps} />
           </View>
           <View style={[styles.container, { backgroundColor: "#CBF941" }]}>
             <Image source={require("../assets/02.png")} style={styles.image} />

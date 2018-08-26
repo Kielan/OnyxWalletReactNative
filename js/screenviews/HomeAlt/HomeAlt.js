@@ -77,6 +77,7 @@ export class HomeAlt extends React.Component {
     }
   }
   render() {
+    const { graphProps } = this.props
     return (
       <View>
         <View>
