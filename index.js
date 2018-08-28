@@ -1,4 +1,6 @@
-'use strict'
+//'use strict'
+require('node-libs-react-native/globals')
+
 import { Navigation } from 'react-native-navigation'
 import { Provider } from 'react-redux'
 //import { falcoWalletTheme } from './constants'

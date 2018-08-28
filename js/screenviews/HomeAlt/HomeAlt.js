@@ -10,7 +10,7 @@ import {
 import { Navigation } from 'react-native-navigation'
 import { AssetDataGraph } from '../../components/AssetDataGraph'
 import { AssetList } from '../../components/AssetList'
-import { COLORS } from '../../constants'
+import { COLORS, kraken } from '../../constants'
 
 export class HomeAlt extends React.Component {
   constructor(props) {
@@ -48,6 +48,9 @@ export class HomeAlt extends React.Component {
       }
     })
   }
+  componentDidMount() {
+    this.logKraken().done()
+  }
   static get options() {
     return {
       topBar: {
@@ -76,8 +79,18 @@ export class HomeAlt extends React.Component {
       }
     }
   }
+  async logKraken() {
+    // Display user's balance
+    console.log('kraken balance', await kraken.api('Balance'))
+
+    // Get Ticker Info
+    console.log('kraken ticker info', await kraken.api('Ticker', { pair : 'XXBTZUSD' }))
+  }
   render() {
-    const { graphProps } = this.props
+
+
+    const graphProps = {}
+    graphProps.data = []
     return (
       <View>
         <View>
@@ -87,7 +100,7 @@ export class HomeAlt extends React.Component {
           <Text style={[{ color: COLORS.PRIMARY_WHITE }]} >$26.81</Text>
           <Text style={[{ color: COLORS.PRIMARY_WHITE }]} >USD</Text>
         </View>
-        {graphProps.data && graphProps.data.length > 0 && <AssetDataGraph />}
+        {graphProps.data && graphProps.data.length > 0 && <AssetDataGraph {...graphProps} />}
         <AssetList {...graphProps} />
       </View>
     )

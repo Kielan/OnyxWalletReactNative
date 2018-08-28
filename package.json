@@ -1,6 +1,6 @@
 {
   "name": "FalcoWallet",
-  "version": "1.9.4",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -8,24 +8,39 @@
     "test:e2e": "detox test -c ios.sim.debug"
   },
   "dependencies": {
-    "@4.0.0": "5.0.0",
+    "@tradle/react-native-http": "^2.0.1",
     "axios": "^0.18.0",
-    "babel-plugin-rewrite-require": "^1.14.5",
+    "babel-preset-react-native": "5.0.0",
+    "browserify-zlib": "^0.1.4",
     "crypto": "^1.0.1",
     "d3": "5.5.0",
+    "dns.js": "^1.0.1",
     "expect": "^23.5.0",
     "got": "^9.1.0",
+    "https-browserify": "0.0.1",
+    "node-libs-react-native": "^1.0.2",
     "prop-types": "^15.6.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
-    "react-native-fast-crypto": "^1.5.6",
+    "react-native-crypto": "^2.1.2",
+    "react-native-level-fs": "^3.0.1",
     "react-native-navigation": "2.0.2459",
+    "react-native-os": "^1.2.1",
+    "react-native-randombytes": "^3.5.0",
+    "react-native-tcp": "^3.3.0",
+    "react-native-udp": "^2.3.1",
     "react-redux": "5.0.7",
+    "readable-stream": "^1.0.33",
     "redux": "3.5.2",
     "redux-logger": "2.6.1",
     "redux-saga": "1.0.0-beta.1",
     "redux-storage": "4.0.0",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "stream-browserify": "^1.0.0",
+    "string_decoder": "^0.10.31",
+    "timers-browserify": "^1.4.2",
+    "url": "^0.10.3",
+    "vm-browserify": "0.0.4"
   },
   "devDependencies": {
     "babel-eslint": "8.0.3",
@@ -37,6 +52,7 @@
     "redux-saga-testing": "1.0.5",
     "remote-redux-devtools": "^0.3.3",
     "remote-redux-devtools-on-debugger": "^0.4.5",
+    "rn-nodeify": "tradle/rn-nodeify",
     "snapshot-diff": "^0.4.0"
   },
   "jest": {

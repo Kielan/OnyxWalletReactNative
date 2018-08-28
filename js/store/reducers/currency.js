@@ -1,24 +1,23 @@
 'use strict'
 import { Platform, PlatformIOSStatic } from 'react-native'
 import * as types from '../actions/actionTypes'
-import { COLORS, kk } from '../../constants'
-import { KrakenClient } from '../../utils/kraken'
-const kraken       = new KrakenClient(kk.public_key, kk.private_key)
+import { COLORS } from '../../constants'
+
 const initialState = {
   isFetching: false,
   USD: null,
   EUR: null,
   BTC: null,
 }
-
+/*
 const logKraken = async () => {
 	// Display user's balance
-	console.log(await kraken.api('Balance'))
+	console.log('kraken balance', await kraken.api('Balance'))
 
 	// Get Ticker Info
-	console.log(await kraken.api('Ticker', { pair : 'XXBTZUSD' }))
+	console.log('kraken ticker info', await kraken.api('Ticker', { pair : 'XXBTZUSD' }))
 }
-
+*/
 export default function currency(state = initialState, action) {
   switch(action.type) {
     case types.PRICE_REQUEST:

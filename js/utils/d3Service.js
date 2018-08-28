@@ -46,7 +46,7 @@ function createScaleY(minY, maxY, height) {
  */
 export function createLineGraph({data, xAccessor, yAccessor, width, height}) {
     // Get last item in the array.
-  const lastDatum = data[data.length - 1]
+  const lastDatum = data.length ? data[data.length - 1] : 0
 
   // Create our x-scale.
   console.log('Create our x-scale.', data[0])
@@ -102,7 +102,7 @@ export function createLiveStreamChannelActivityOverview(liveChatList) {
   //each index is an x point and value at that location is the yValue
   const plotChartValues = internalPlotDatumFactoryX(sortedChatList)
 //  console.log('right before err publishedAtSinceEpoch', plotChartValues)
-  const activityPeak = plotChartValues[plotChartValues.length-1]//sortedChatList[sortedChatList.length-1]//reduceLiveChatActivityPeak(sortedChatList, 'publishedAtSinceEpoch')
+  const activityPeak = plotChartValues.length ? plotChartValues[plotChartValues.length-1] : 0//sortedChatList[sortedChatList.length-1]//reduceLiveChatActivityPeak(sortedChatList, 'publishedAtSinceEpoch')
   const activityFloor = plotChartValues[0]//reduceLiveChatActivityFloor(sortedChatList, 'publishedAtSinceEpoch')
 
   //map over array and add a key for a generalized yAccessor... > < not happy about how that turned out
@@ -166,7 +166,7 @@ var countSwap = 0
 function quicksort(array, indexKey, left, right) {
   countOuter++
   left = left || 0
-  right = right || array.length - 1
+  right = right || array.length ? array.length - 1 : 0
 
   var pivot = partitionHoare(array, indexKey, left, right)
 

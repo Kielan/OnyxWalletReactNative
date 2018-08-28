@@ -1,6 +1,8 @@
 'use strict'
 import * as $http from 'axios'
-import crypto from 'react-native-fast-crypto'
+//import crypto from 'react-native-fast-crypto'
+//import crypto from 'crypto'
+var crypto = require('crypto')
 import qs from'qs'
 
 // Public/Private method names
